@@ -35,9 +35,10 @@ export default function Home() {
       <Container size="lg" className={nunito.className}>
         <Flex direction="column" gap={96}>
           <Flex direction="column" gap="md">
+            <Space></Space>
             <Title order={1}>IPCountry</Title>
             <Text fz="md">
-              IPCountry is a free API that allows you to get the IP and the
+              IPCountry is a completely free API that allows you to get the IP and the
               Country ISO code of the user.
             </Text>
             <Text fz="md">
@@ -50,6 +51,14 @@ export default function Home() {
               <Prism language="text">
                 https://api.ipcountry.dev/getCountryCode
               </Prism>
+              <Text fz="md">
+                This endpoint is limited to 1000 requests/IP per 10 seconds.
+              </Text>
+              <Text fz="md">
+                If you reach the limit, you will get a 429 error.
+                You can read the "Retry-After" header to know when you can
+                retry (in seconds).
+              </Text>
             </Flex>
             <Flex direction="column" gap="md">
               <Title order={2}>GET</Title>
