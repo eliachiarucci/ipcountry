@@ -1,1 +1,3 @@
-This is a starter template for [Learn Next.js](https://nextjs.org/learn).
+Repository for the IPCountry website.
+
+IPCountry is a completely free, no-registration, IP country finder service. 
