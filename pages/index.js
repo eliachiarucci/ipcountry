@@ -2,12 +2,14 @@ import Head from "next/head";
 import { Nunito } from "next/font/google";
 import { Prism } from "@mantine/prism";
 import {
+  Button,
   Container,
   Flex,
   Group,
   SegmentedControl,
   Space,
   Text,
+  TextInput,
   Title,
 } from "@mantine/core";
 import { useEffect, useState } from "react";
@@ -26,6 +28,8 @@ const nunito = Nunito({ subsets: ["latin"] });
 
 export default function Home() {
   const [userData, setUserData] = useState({});
+  const [searchIP, setSearchIP] = useState("");
+  const [searchResultData, setSearchResultData] = useState({});
   const [responseExampleController, setResponseExampleController] = useState({
     get: "200",
     post: "200",
@@ -35,6 +39,8 @@ export default function Home() {
       const req = await fetch("https://api.ipcountry.dev/getCountryCode");
       const res = await req.json();
       setUserData(res);
+      setSearchResultData(res);
+      setSearchIP(res.ip);
     };
     getData();
   }, []);
@@ -63,6 +69,19 @@ export default function Home() {
     }
   };
 
+  const getCountry = async (e, ip) => {
+    e.preventDefault();
+    const req = await fetch("https://api.ipcountry.dev/getCountryCode", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ ip }),
+    });
+    const res = await req.json();
+    setSearchResultData(res);
+  };
+
   return (
     <div>
       <Head>
@@ -82,6 +101,26 @@ export default function Home() {
             <Text fz="md">
               There are 2 endpoints, one for GET and one for POST.
             </Text>
+            <Flex direction="column" gap={16}>
+              <form onClick={(e) => getCountry(e, searchIP)}>
+                <Flex align="flex-end">
+                  <TextInput
+                    value={searchIP}
+                    onChange={(e) => setSearchIP(e.target.value)}
+                    label="IP Address"
+                  />
+                  <Button type="submit" style={{ marginLeft: 18 }}>
+                    Get Country
+                  </Button>
+                </Flex>
+              </form>
+              <Flex direction="column">
+                <Text size="sm">Response:</Text>
+                <Prism language="js">
+                  {JSON.stringify(searchResultData, null, 2)}
+                </Prism>
+              </Flex>
+            </Flex>
           </Flex>
           <Flex direction="column" gap={64}>
             <Flex direction="column" gap="md">
