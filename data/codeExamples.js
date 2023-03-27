@@ -40,13 +40,13 @@ const postResponse429 = `
 `;
 
 const getHeaders = `
-RateLimit-Limit: 10 // Number of requests allowed per window (5 seconds)
+RateLimit-Limit: 10 // Number of requests allowed per second
 RateLimit-Remaining: 9 // Number of requests remaining
 RateLimit-Reset: 1 // Number of seconds until the rate limit resets
 `
 
 const postHeaders = `
-RateLimit-Limit: 50 // Number of requests allowed per window (5 seconds)
+RateLimit-Limit: 50 // Number of requests allowed per time window (5 seconds)
 RateLimit-Remaining: 49 // Number of requests remaining
 RateLimit-Reset: 5 // Number of seconds until the rate limit resets
 `
