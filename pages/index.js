@@ -130,7 +130,7 @@ export default function Home() {
               </Prism>
               <Text fz="md">
                 If you reach the limit, you will get a 429 error. You can read
-                the "Retry-After" header to know when you can retry (in
+                the "RateLimit-Reset" header to know when you can retry (in
                 seconds).
               </Text>
             </Flex>
