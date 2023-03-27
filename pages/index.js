@@ -70,7 +70,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Container size="lg" className={nunito.className}>
+      <Container size="md" className={nunito.className}>
         <Flex direction="column" gap={96}>
           <Flex direction="column" gap="md">
             <Space />
