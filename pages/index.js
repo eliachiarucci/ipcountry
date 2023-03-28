@@ -141,7 +141,7 @@ export default function Home() {
                 one request you can get the ip address and the location.
               </Text>
               <Text fz="md">
-                This endpoint is limited to 10 requests per second.
+                This endpoint is limited to 10 requests per second per user/IP.
               </Text>
               <Text fz="md">
                 The limit is counted towards the originating IP address.
