@@ -150,7 +150,7 @@ export default function Home() {
                 <Text fz="lg">Usage:</Text>
               </div>
               <div>
-                <Prism language="js">{codePost(userData.ip)}</Prism>
+                <Prism language="js">{codeGet()}</Prism>
               </div>
               <div>
                 <Text fz="lg">Response Headers (example):</Text>
