@@ -6,6 +6,7 @@ import {
   Container,
   Flex,
   Group,
+  Navbar,
   SegmentedControl,
   Space,
   Text,
@@ -24,6 +25,9 @@ import {
   postResponse404,
   postResponse429,
 } from "../data/codeExamples";
+import Image from "next/image";
+import Logo from "../assets/IPCountryLogo.png";
+
 const nunito = Nunito({ subsets: ["latin"] });
 
 export default function Home() {
@@ -85,17 +89,16 @@ export default function Home() {
   return (
     <div>
       <Head>
-        <title>IPCountry</title>
+        <title>IP-Country</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <Container size="md" className={nunito.className}>
         <Flex direction="column" gap={96}>
-          <Flex direction="column" gap="md">
-            <Space />
-            <Title order={1}>IPCountry</Title>
+          <Flex direction="column" gap="md" style={{ marginTop: 64 }}>
+            <Image src={Logo} />
             <Text fz="md">
-              IPCountry is a completely free API that allows you to get the IP
+              IP-Country is a completely free API that allows you to get the IP
               and the Country ISO code of the user.
             </Text>
             <Text fz="md">
