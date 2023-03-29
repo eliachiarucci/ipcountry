@@ -10,12 +10,13 @@ import {
   MantineProvider,
   Navbar,
   SegmentedControl,
+  Select,
   Space,
   Text,
   TextInput,
   Title,
 } from "@mantine/core";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   codeGet,
   codePost,
@@ -31,6 +32,28 @@ import Image from "next/image";
 import Logo from "../assets/IPCountryLogo.png";
 
 const nunito = Nunito({ subsets: ["latin"] });
+
+const ExampleMobileSelector = (props) => {
+  const [windowWidth, setWindowWidth] = useState(undefined);
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setWindowWidth(window.innerWidth);
+    }
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  return windowWidth > 768 ? (
+    <SegmentedControl {...props} />
+  ) : (
+    <Select {...props} />
+  );
+};
 
 export default function Home() {
   const [userData, setUserData] = useState({});
@@ -193,7 +216,7 @@ export default function Home() {
                 </div>
                 <div>
                   <Text fz="lg">Response Body:</Text>
-                  <SegmentedControl
+                  <ExampleMobileSelector
                     value={responseExampleController.get}
                     onChange={(value) =>
                       setResponseExampleController({
@@ -241,7 +264,7 @@ export default function Home() {
                 </div>
                 <div>
                   <Text fz="lg">Response Body:</Text>
-                  <SegmentedControl
+                  <ExampleMobileSelector
                     value={responseExampleController.post}
                     onChange={(value) =>
                       setResponseExampleController({
