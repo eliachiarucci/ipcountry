@@ -145,7 +145,7 @@ export default function Home() {
         <Container size="md" className={nunito.className}>
           <Flex direction="column" gap={64}>
             <Flex direction="column" gap="md" style={{ marginTop: 64 }}>
-              <Image src={Logo} />
+              <Image src={Logo} width={300} />
               <Text fz="md">
                 IP-Country is a completely free API that allows you to get the
                 IP and the Country ISO code of the user.
